@@ -42,7 +42,7 @@ class MyDns {
       request(url, {'auth': {'user': this.MasterID, 'pass': this.Password}}, (err, response)=>{
         if(err) {
           this._notify(err, null);
-          reject(err);
+          resolve();
           return;
         }
         if(200<=response.statusCode && response.statusCode<300) {
@@ -51,7 +51,7 @@ class MyDns {
         }else{
           const err = new Error(`status: ${response.statusCode}`);
           this._notify(err, null);
-          reject(err);
+          resolve();
           return;
         }
       });
